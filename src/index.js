@@ -17,7 +17,8 @@ function returnFirstArgument(param) {
 	return returnFunc;
 }
 var result = returnFirstArgument("Аргумент");
-console.log(result);
+console.log('Задание 1:' + ' ' + result);
+
 /*
  Задание 2:
 
@@ -32,8 +33,25 @@ console.log(result);
  Пример:
    sumWithDefaults(10) вернет 110
  */
-function sumWithDefaults(a, b) {}
+function sumWithDefaults(a, b) {
+	var sum = a + b; //  В переменную sum присваиваем сумму двух параметров фун-ии
 
+	return sum; //  Возвращаем результат переменной sum
+}
+
+var resultFunc1 = sumWithDefaults(50, 30); // В переменную result присваиваем вызов фун-ии с аргументами
+
+console.log('Задание 2.1:' + ' ' + resultFunc1); // Выводим переменную result в консоль   80
+
+function sumWithDefaults2(a) {
+	var sum = a + 100; //  В переменную sum присваиваем сумму параметра фун-ии и дефолтного аргумента
+
+	return sum; //  Возвращаем результат переменной sum
+}
+
+var resultFunc2 = sumWithDefaults2(50); // В переменную result присваиваем вызов фун-ии с аргументом
+
+console.log('Задание 2.1*:' + ' ' + resultFunc2); // Выводим переменную result в консоль    150
 /*
  Задание 3:
 
