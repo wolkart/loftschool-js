@@ -86,7 +86,20 @@ returnFnResult(() => "Привет");
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number) {}
+function returnCounter(number) {
+	return function() {
+    var count = number++;
+
+		return 1 + count;
+	};
+}
+
+var f = returnCounter(10);
+
+console.log("Задание 4:" + " " + f());
+console.log("Задание 4:" + " " + f());
+console.log("Задание 4:" + " " + f());
+
 
 /*
  Задание 5 *:
