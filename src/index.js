@@ -88,9 +88,7 @@ returnFnResult(() => "Привет");
  */
 function returnCounter(number) {
 	return function() {
-    var count = number++;
-
-		return 1 + count;
+		return ++number;
 	};
 }
 
@@ -99,7 +97,6 @@ var f = returnCounter(10);
 console.log("Задание 4:" + " " + f());
 console.log("Задание 4:" + " " + f());
 console.log("Задание 4:" + " " + f());
-
 
 /*
  Задание 5 *:
