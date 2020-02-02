@@ -44,8 +44,8 @@ var resultFunc1 = sumWithDefaults(50, 30); // В переменную result п�
 
 console.log("Задание 2.1:" + " " + resultFunc1); // Выводим переменную result в консоль   80
 
-function sumWithDefaults2(a) {
-	var sum = a + 100; //  В переменную sum присваиваем сумму параметра фун-ии и дефолтного аргумента
+function sumWithDefaults2(a, b = 100) {
+	var sum = a + b; //  В переменную sum присваиваем сумму параметра фун-ии и дефолтного аргумента
 
 	return sum; //  Возвращаем результат переменной sum
 }
@@ -67,6 +67,7 @@ function returnFnResult(fn) {
 	var resultFn = fn();
 
 	console.log("Задание 3:" + " " + resultFn);
+	return resultFn;
 }
 
 returnFnResult(() => "Привет");
@@ -109,9 +110,9 @@ console.log("Задание 4:" + " " + f());
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
 function returnArgumentsArray() {
-  let array = []; // присваиваем переменной array массив
-  
-  // перебираем встроенную в js переменную arguments
+	let array = []; // присваиваем переменной array массив
+
+	// перебираем встроенную в js переменную arguments
 	for (let i = 0; i < arguments.length; i++) {
 		array[i] = arguments[i]; // присваиваем массиву полученные аргументы
 	}
@@ -136,6 +137,19 @@ console.log("Задание 5*:" + " " + resultConsole);
 
    console.log(newSum()) выведет 6
  */
-function bindFunction(fn) {}
+function sum(a, b) {
+	return a + b;
+}
 
-// export { returnFirstArgument, sumWithDefaults, returnArgumentsArray, returnFnResult, returnCounter, bindFunction };
+// эта фун-я не делает сложения, а только связывает пар-ры и возвращает записанную в ее аргумент фун-ю
+function bindFunction(fn, a, b) {
+	const func = fn.bind(fn, a, b); // методом bind, привязываем к параметру fn другие параметры, и записываем в func
+
+	return func; // возвращаем func
+}
+
+const resultBindFn = bindFunction(sum, 30, 20); // соответственно аргументы 10, 20 будут записаны в параметры фун-ии sum (которая их сложит), как если бы она была вызвана отдельно с этими пар-ми
+
+console.log(resultBindFn());
+
+export { returnFirstArgument, sumWithDefaults, returnArgumentsArray, returnFnResult, returnCounter, bindFunction };
