@@ -30,9 +30,7 @@ function returnFirstArgument(param) {
    sumWithDefaults(10) вернет 110
  */
 function sumWithDefaults(a, b = 100) {
-    var sum = a + b; //  В переменную sum присваиваем сумму параметра фун-ии и дефолтного аргумента
-
-    return sum; //  Возвращаем результат переменной sum
+    return a + b;
 }
 /*
  Задание 3:
@@ -103,4 +101,4 @@ function bindFunction(fn, a, b) {
     return func; // возвращаем func
 }
 
-export { returnFirstArgument, sumWithDefaults, returnArgumentsArray, returnFnResult, returnCounter, bindFunction };
+// export { returnFirstArgument, sumWithDefaults, returnArgumentsArray, returnFnResult, returnCounter, bindFunction };
