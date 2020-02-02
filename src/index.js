@@ -98,6 +98,7 @@ console.log("Задание 4:" + " " + f());
 console.log("Задание 4:" + " " + f());
 console.log("Задание 4:" + " " + f());
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
  Задание 5 *:
 
@@ -107,8 +108,19 @@ console.log("Задание 4:" + " " + f());
  Пример:
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
-function returnArgumentsArray() {}
+function returnArgumentsArray() {
+  let array = []; // присваиваем переменной array массив
+  
+  // перебираем встроенную в js переменную arguments
+	for (let i = 0; i < arguments.length; i++) {
+		array[i] = arguments[i]; // присваиваем массиву полученные аргументы
+	}
+	return array; // возвращаем массив
+}
 
+const resultConsole = returnArgumentsArray(55, "привет", 5, "бла", 7, 8, 3, 5, 32);
+
+console.log("Задание 5*:" + " " + resultConsole);
 /*
  Задание 6 *:
 
@@ -126,4 +138,4 @@ function returnArgumentsArray() {}
  */
 function bindFunction(fn) {}
 
-export { returnFirstArgument, sumWithDefaults, returnArgumentsArray, returnFnResult, returnCounter, bindFunction };
+// export { returnFirstArgument, sumWithDefaults, returnArgumentsArray, returnFnResult, returnCounter, bindFunction };
