@@ -55,9 +55,9 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-    let arrNames = Object.keys(obj);
+    let arrKeys = Object.keys(obj);
 
-    return arrNames.map(i => i.toUpperCase());
+    return arrKeys.map(i => i.toUpperCase());
 }
 
 /*
