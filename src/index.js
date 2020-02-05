@@ -11,6 +11,7 @@ function forEach(array, fn) {
         fn(array[i], i, array);
     }
 }
+
 /*
  Задание 2:
 
@@ -26,13 +27,24 @@ function map(array, fn) {
 
     return newArray;
 }
+
 /*
  Задание 3:
 
  Напишите аналог встроенного метода reduce для работы с массивами
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
-function reduce(array, fn, initial) {}
+function reduce(array, fn, initial) {
+    initial ? undefined : (initial = array.shift());
+
+    let previousValue = initial;
+
+    for (let i = 0; i < array.length; i++) {
+        previousValue = fn(previousValue, array[i], i, array);
+    }
+
+    return previousValue;
+}
 
 /*
  Задание 4:
