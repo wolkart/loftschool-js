@@ -54,7 +54,11 @@ function reduce(array, fn, initial) {
  Пример:
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
-function upperProps(obj) {}
+function upperProps(obj) {
+    let arrNames = Object.keys(obj);
+
+    return arrNames.map(i => i.toUpperCase());
+}
 
 /*
  Задание 5 *:
