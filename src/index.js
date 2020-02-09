@@ -35,7 +35,9 @@ function map(array, fn) {
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
 function reduce(array, fn, initial) {
-    initial ? undefined : (initial = array.shift());
+    if (initial == undefined) {
+        initial = array.shift();
+    }
 
     let previousValue = initial;
 
@@ -76,4 +78,4 @@ function slice(array, from, to) {}
  */
 function createProxy(obj) {}
 
-// export { forEach, map, reduce, upperProps, slice, createProxy };
+export { forEach, map, reduce, upperProps, slice, createProxy };
