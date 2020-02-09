@@ -84,11 +84,13 @@ function returnBadArguments(fn) {
 
     let badArgs = [];
 
-    for (let item of arguments) {
-        try {
-            fn(item);
-        } catch (e) {
-            badArgs.push(item);
+    for (let i = 0; i < arguments.length; i++) {
+        if (typeof arguments[i] != 'function') {
+            try {
+                fn(arguments[i]);
+            } catch (e) {
+                badArgs.push(arguments[i]);
+            }
         }
     }
 
@@ -113,38 +115,25 @@ function returnBadArguments(fn) {
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number = 0) {
+    let result = number;
+
+    if (typeof result != 'number') {
+        throw new Error('number is not a number');
+    }
+
     const object = {
-        sum: () => {
-            for (let item of arguments) {
-                number += item;
-            }
-
-            return number;
-        },
-        dif: () => {
-            for (let item of arguments) {
-                number -= item;
-            }
-
-            return number;
-        },
-        div: () => {
-            for (let item of arguments) {
-                if (item === 0) {
+        sum: (...args) => args.reduce((val, el) => val + el, result),
+        dif: (...args) => args.reduce((val, el) => val - el, result),
+        div: (...args) => {
+            return args.reduce((val, el) => {
+                if (val == 0 || el == 0) {
                     throw new Error('division by 0');
                 }
-                number /= item;
-            }
 
-            return number;
+                return val / el;
+            }, result);
         },
-        mul: () => {
-            for (let item of arguments) {
-                number *= item;
-            }
-
-            return number;
-        },
+        mul: (...args) => args.reduce((val, el) => val * el, result),
     };
 
     return object;
