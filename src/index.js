@@ -84,10 +84,11 @@ function returnBadArguments(fn) {
 
     let badArgs = [];
 
-    for (let i = 0; i < arguments.length; i++) {
-        fn(arguments[i]);
-
-        if (condition) {
+    for (let item of arguments) {
+        try {
+            fn(item);
+        } catch (e) {
+            badArgs.push(item);
         }
     }
 
