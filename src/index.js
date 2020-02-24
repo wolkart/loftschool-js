@@ -9,12 +9,10 @@
    delayPromise(3) // вернет promise, который будет разрешен через 3 секунды
  */
 function delayPromise(seconds) {
-    seconds = 1000;
-
     return new Promise(resolve => {
         setTimeout(() => {
             resolve();
-        }, seconds);
+        }, seconds * 1000);
     });
 }
 
@@ -44,15 +42,17 @@ function loadAndSortTowns() {
             if (xhr.status >= 400) {
                 reject();
             } else {
-                resolve(xhr.response.sort((a,b) => {
-                    if (a.name > b.name) {
-                        return 1;
-                    }
-                    if (a.name < b.name) {
-                        return -1;
-                    }
-                    return 0;
-                }));
+                resolve(
+                    xhr.response.sort((a, b) => {
+                        if (a.name > b.name) {
+                            return 1;
+                        }
+                        if (a.name < b.name) {
+                            return -1;
+                        }
+                        return 0;
+                    }),
+                );
             }
         });
     });

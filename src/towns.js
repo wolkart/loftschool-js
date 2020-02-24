@@ -1,3 +1,4 @@
+import {loadAndSortTowns as loadTowns} from "./index.js";
 /*
  Страница должна предварительно загрузить список городов из
  https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json
@@ -36,34 +37,7 @@ const homeworkContainer = document.querySelector('#homework-container');
  Массив городов пожно получить отправив асинхронный запрос по адресу
  https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json
  */
-function loadTowns() {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        const url = 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json';
-
-        xhr.open('GET', url);
-        xhr.responseType = 'json';
-
-        xhr.addEventListener('load', () => {
-            if (xhr.status >= 400) {
-                reject();
-            } else {
-                resolve(
-                    xhr.response.sort((a, b) => {
-                        if (a.name > b.name) {
-                            return 1;
-                        }
-                        if (a.name < b.name) {
-                            return -1;
-                        }
-                        return 0;
-                    }),
-                );
-            }
-        });
-        xhr.send();
-    });
-}
+loadTowns();
 
 /*
  Функция должна проверять встречается ли подстрока chunk в строке full
